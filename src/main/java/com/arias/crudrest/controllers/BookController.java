@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@AllArgsConstructor
 public class BookController {
 
-    private BookService bookService;
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
     private final Logger log = LoggerFactory.getLogger(BookController.class);
 
     @PostMapping("/books")

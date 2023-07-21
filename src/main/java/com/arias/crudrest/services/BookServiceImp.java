@@ -2,6 +2,7 @@ package com.arias.crudrest.services;
 
 import com.arias.crudrest.entities.Book;
 import com.arias.crudrest.repositories.BookRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +11,11 @@ import java.util.List;
 @Service
 public class BookServiceImp implements BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+
+    public BookServiceImp(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     public List<Book> findAll() {
