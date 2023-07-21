@@ -1,14 +1,23 @@
 services:
   spring-crud-books:
-    image: spring-crud-books
+    image: spring-crud
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    environment:
+      MYSQL_HOST: mysql-db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: library
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234jose
+
     depends_on:
       - mysql
   mysql:
+    container_name: mysql-db
     platform: linux/x86_64
     image: mysql:8.0.26
     ports:
@@ -17,5 +26,4 @@ services:
       MYSQL_ROOT_PASSWORD: 1234jose
       MYSQL_DATABASE: library
       MYSQL_ROOT_USER: root
-      MYSQL_USER: root
       MYSQL_PASSWORD: 1234jose
