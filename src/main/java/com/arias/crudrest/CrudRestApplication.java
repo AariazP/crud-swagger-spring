@@ -1,0 +1,14 @@
+package com.arias.crudrest;
+
+import com.arias.crudrest.entities.Book;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CrudRestApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(CrudRestApplication.class, args);
+    }
+
+}
